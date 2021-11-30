@@ -54,7 +54,7 @@
         }
         var map = L.map('map', {
             zoomControl:true, maxZoom:28, minZoom:1
-        }).fitBounds([[44.66180154541144,-0.8762745052777612],[44.96382281195822,-0.3907893886174898]]);
+        }).fitBounds([[44.66821427942696,-0.7415842758488296],[44.91970431733657,-0.4988417175186939]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -156,7 +156,7 @@
                 case 'A faire':
                     return {
                 pane: 'pane_Restaurants_2',
-                radius: 4.0,
+                radius: 7.0,
                 opacity: 1,
                 color: 'rgba(50,87,128,1.0)',
                 dashArray: '',
@@ -172,7 +172,7 @@
                 case 'A venir':
                     return {
                 pane: 'pane_Restaurants_2',
-                radius: 4.0,
+                radius: 7.0,
                 opacity: 1,
                 color: 'rgba(179,92,21,1.0)',
                 dashArray: '',
@@ -188,7 +188,7 @@
                 case 'Faits':
                     return {
                 pane: 'pane_Restaurants_2',
-                radius: 4.0,
+                radius: 7.0,
                 opacity: 1,
                 color: 'rgba(61,128,53,1.0)',
                 dashArray: '',
@@ -198,22 +198,6 @@
                 fill: true,
                 fillOpacity: 1,
                 fillColor: 'rgba(85,255,0,1.0)',
-                interactive: true,
-            }
-                    break;
-                default:
-                    return {
-                pane: 'pane_Restaurants_2',
-                radius: 4.0,
-                opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1,
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(73,218,104,1.0)',
                 interactive: true,
             }
                     break;
@@ -262,7 +246,7 @@
         document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
         .title += 'Search for a place';
         var baseMaps = {};
-        L.control.layers(baseMaps,{'Restaurants<br /><table><tr><td style="text-align: center;"><img src="legend/Restaurants_2_Afaire0.png" /></td><td>A faire</td></tr><tr><td style="text-align: center;"><img src="legend/Restaurants_2_Avenir1.png" /></td><td>A venir</td></tr><tr><td style="text-align: center;"><img src="legend/Restaurants_2_Faits2.png" /></td><td>Faits</td></tr><tr><td style="text-align: center;"><img src="legend/Restaurants_2_3.png" /></td><td></td></tr></table>': layer_Restaurants_2,"Google Satellite Hybrid ": layer_GoogleSatelliteHybrid_1,"Google Map ": layer_GoogleMap_0,}).addTo(map);
+        L.control.layers(baseMaps,{'Restaurants<br /><table><tr><td style="text-align: center;"><img src="legend/Restaurants_2_Afaire0.png" /></td><td>A faire</td></tr><tr><td style="text-align: center;"><img src="legend/Restaurants_2_Avenir1.png" /></td><td>A venir</td></tr><tr><td style="text-align: center;"><img src="legend/Restaurants_2_Faits2.png" /></td><td>Faits</td></tr></table>': layer_Restaurants_2,"Google Satellite Hybrid ": layer_GoogleSatelliteHybrid_1,"Google Map ": layer_GoogleMap_0,}).addTo(map);
         map.on("zoomend", function(){
 
                 if (map.hasLayer(layer_Restaurants_2)) {
