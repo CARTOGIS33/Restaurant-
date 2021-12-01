@@ -34,7 +34,8 @@
         <script src="js/labels.js"></script>
         <script src="js/leaflet-control-geocoder.Geocoder.js"></script>
         <script src="js/leaflet-measure.js"></script>
-        <script src="data/Restaurants_2.js"></script>
+        <script src="data/Ancien_quartiers_BDX_2.js"></script>
+        <script src="data/Restaurants_3.js"></script>
         <script>
         var highlightLayer;
         function highlightFeature(e) {
@@ -54,7 +55,7 @@
         }
         var map = L.map('map', {
             zoomControl:true, maxZoom:28, minZoom:1
-        }).fitBounds([[44.66821427942696,-0.7415842758488296],[44.91970431733657,-0.4988417175186939]]);
+        }).fitBounds([[44.79382800209406,-0.6264269736071855],[44.869573861856324,-0.5046690325731853]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -101,7 +102,472 @@
         });
         layer_GoogleSatelliteHybrid_1;
         map.addLayer(layer_GoogleSatelliteHybrid_1);
-        function pop_Restaurants_2(feature, layer) {
+        function pop_Ancien_quartiers_BDX_2(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    for (i in e.target._eventParents) {
+                        e.target._eventParents[i].resetStyle(e.target);
+                    }
+                    if (typeof layer.closePopup == 'function') {
+                        layer.closePopup();
+                    } else {
+                        layer.eachLayer(function(feature){
+                            feature.closePopup()
+                        });
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ogc_fid'] !== null ? autolinker.link(feature.properties['ogc_fid'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Quartiers'] !== null ? autolinker.link(feature.properties['Quartiers'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Ancien_quartiers_BDX_2_0(feature) {
+            switch(String(feature.properties['Quartiers'])) {
+                case 'Bordeaux Nord':
+                    return {
+                pane: 'pane_Ancien_quartiers_BDX_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.5)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(106,203,171,0.5)',
+                interactive: true,
+            }
+                    break;
+                case 'CHARTRONS':
+                    return {
+                pane: 'pane_Ancien_quartiers_BDX_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.5)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(232,225,89,0.5)',
+                interactive: true,
+            }
+                    break;
+                case 'CROIX BLANCHE':
+                    return {
+                pane: 'pane_Ancien_quartiers_BDX_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.5)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(62,211,224,0.5)',
+                interactive: true,
+            }
+                    break;
+                case 'CROIX DE SEGUEY':
+                    return {
+                pane: 'pane_Ancien_quartiers_BDX_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.5)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(131,211,111,0.5)',
+                interactive: true,
+            }
+                    break;
+                case 'GAMBETTA':
+                    return {
+                pane: 'pane_Ancien_quartiers_BDX_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.5)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(32,87,236,0.5)',
+                interactive: true,
+            }
+                    break;
+                case 'GD HOMMES':
+                    return {
+                pane: 'pane_Ancien_quartiers_BDX_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.5)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(190,222,28,0.5)',
+                interactive: true,
+            }
+                    break;
+                case 'HOTEL DE VILLE /SAINT-CHRISTOLY':
+                    return {
+                pane: 'pane_Ancien_quartiers_BDX_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.5)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(206,75,61,0.5)',
+                interactive: true,
+            }
+                    break;
+                case 'JARDIN PUBLIC':
+                    return {
+                pane: 'pane_Ancien_quartiers_BDX_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.5)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(205,138,107,0.5)',
+                interactive: true,
+            }
+                    break;
+                case 'JUDAIQUE':
+                    return {
+                pane: 'pane_Ancien_quartiers_BDX_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.5)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(200,98,154,0.5)',
+                interactive: true,
+            }
+                    break;
+                case 'MARNE/SAINT-JEAN':
+                    return {
+                pane: 'pane_Ancien_quartiers_BDX_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.5)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(149,29,235,0.5)',
+                interactive: true,
+            }
+                    break;
+                case 'MERIADECK':
+                    return {
+                pane: 'pane_Ancien_quartiers_BDX_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.5)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(95,31,204,0.5)',
+                interactive: true,
+            }
+                    break;
+                case 'NANSOUTY':
+                    return {
+                pane: 'pane_Ancien_quartiers_BDX_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.5)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(71,201,129,0.5)',
+                interactive: true,
+            }
+                    break;
+                case 'ORNANO':
+                    return {
+                pane: 'pane_Ancien_quartiers_BDX_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.5)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(206,73,239,0.5)',
+                interactive: true,
+            }
+                    break;
+                case 'PALAIS GALLIEN':
+                    return {
+                pane: 'pane_Ancien_quartiers_BDX_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.5)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(237,121,134,0.5)',
+                interactive: true,
+            }
+                    break;
+                case 'QUINQUONCES':
+                    return {
+                pane: 'pane_Ancien_quartiers_BDX_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.5)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(202,23,196,0.5)',
+                interactive: true,
+            }
+                    break;
+                case 'SAINT-BRUNO':
+                    return {
+                pane: 'pane_Ancien_quartiers_BDX_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.5)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(26,204,29,0.5)',
+                interactive: true,
+            }
+                    break;
+                case 'SAINT-GENES':
+                    return {
+                pane: 'pane_Ancien_quartiers_BDX_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.5)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(123,107,200,0.5)',
+                interactive: true,
+            }
+                    break;
+                case 'SAINT-LOUIS':
+                    return {
+                pane: 'pane_Ancien_quartiers_BDX_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.5)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(128,182,239,0.5)',
+                interactive: true,
+            }
+                    break;
+                case 'SAINT-MICHEL':
+                    return {
+                pane: 'pane_Ancien_quartiers_BDX_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.5)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(234,110,151,0.5)',
+                interactive: true,
+            }
+                    break;
+                case 'SAINT-PAUL':
+                    return {
+                pane: 'pane_Ancien_quartiers_BDX_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.5)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(86,220,117,0.5)',
+                interactive: true,
+            }
+                    break;
+                case 'SAINT-PIERRE':
+                    return {
+                pane: 'pane_Ancien_quartiers_BDX_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.5)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(21,32,227,0.5)',
+                interactive: true,
+            }
+                    break;
+                case 'SAINT-SEURIN':
+                    return {
+                pane: 'pane_Ancien_quartiers_BDX_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.5)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(125,220,62,0.5)',
+                interactive: true,
+            }
+                    break;
+                case 'SAINTE EULALIE':
+                    return {
+                pane: 'pane_Ancien_quartiers_BDX_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.5)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(62,169,215,0.5)',
+                interactive: true,
+            }
+                    break;
+                case 'SAINTE-CROIX':
+                    return {
+                pane: 'pane_Ancien_quartiers_BDX_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.5)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(218,180,77,0.5)',
+                interactive: true,
+            }
+                    break;
+                case 'SOMME':
+                    return {
+                pane: 'pane_Ancien_quartiers_BDX_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.5)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(13,209,186,0.5)',
+                interactive: true,
+            }
+                    break;
+                case 'TIVOLI':
+                    return {
+                pane: 'pane_Ancien_quartiers_BDX_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.5)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(210,26,164,0.5)',
+                interactive: true,
+            }
+                    break;
+                case 'VICTOIRE':
+                    return {
+                pane: 'pane_Ancien_quartiers_BDX_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.5)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(236,171,96,0.5)',
+                interactive: true,
+            }
+                    break;
+                default:
+                    return {
+                pane: 'pane_Ancien_quartiers_BDX_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.5)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(160,240,32,0.5)',
+                interactive: true,
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_Ancien_quartiers_BDX_2');
+        map.getPane('pane_Ancien_quartiers_BDX_2').style.zIndex = 402;
+        map.getPane('pane_Ancien_quartiers_BDX_2').style['mix-blend-mode'] = 'multiply';
+        var layer_Ancien_quartiers_BDX_2 = new L.geoJson(json_Ancien_quartiers_BDX_2, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Ancien_quartiers_BDX_2',
+            layerName: 'layer_Ancien_quartiers_BDX_2',
+            pane: 'pane_Ancien_quartiers_BDX_2',
+            onEachFeature: pop_Ancien_quartiers_BDX_2,
+            style: style_Ancien_quartiers_BDX_2_0,
+        });
+        bounds_group.addLayer(layer_Ancien_quartiers_BDX_2);
+        map.addLayer(layer_Ancien_quartiers_BDX_2);
+        function pop_Restaurants_3(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (i in e.target._eventParents) {
@@ -151,11 +617,11 @@
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_Restaurants_2_0(feature) {
+        function style_Restaurants_3_0(feature) {
             switch(String(feature.properties['faits/ a faire/a venir'])) {
                 case 'A faire':
                     return {
-                pane: 'pane_Restaurants_2',
+                pane: 'pane_Restaurants_3',
                 radius: 7.0,
                 opacity: 1,
                 color: 'rgba(50,87,128,1.0)',
@@ -171,7 +637,7 @@
                     break;
                 case 'A venir':
                     return {
-                pane: 'pane_Restaurants_2',
+                pane: 'pane_Restaurants_3',
                 radius: 7.0,
                 opacity: 1,
                 color: 'rgba(179,92,21,1.0)',
@@ -187,7 +653,7 @@
                     break;
                 case 'Faits':
                     return {
-                pane: 'pane_Restaurants_2',
+                pane: 'pane_Restaurants_3',
                 radius: 7.0,
                 opacity: 1,
                 color: 'rgba(61,128,53,1.0)',
@@ -203,37 +669,47 @@
                     break;
             }
         }
-        map.createPane('pane_Restaurants_2');
-        map.getPane('pane_Restaurants_2').style.zIndex = 402;
-        map.getPane('pane_Restaurants_2').style['mix-blend-mode'] = 'normal';
-        var layer_Restaurants_2 = new L.geoJson(json_Restaurants_2, {
+        map.createPane('pane_Restaurants_3');
+        map.getPane('pane_Restaurants_3').style.zIndex = 403;
+        map.getPane('pane_Restaurants_3').style['mix-blend-mode'] = 'normal';
+        var layer_Restaurants_3 = new L.geoJson(json_Restaurants_3, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_Restaurants_2',
-            layerName: 'layer_Restaurants_2',
-            pane: 'pane_Restaurants_2',
-            onEachFeature: pop_Restaurants_2,
+            dataVar: 'json_Restaurants_3',
+            layerName: 'layer_Restaurants_3',
+            pane: 'pane_Restaurants_3',
+            onEachFeature: pop_Restaurants_3,
             pointToLayer: function (feature, latlng) {
                 var context = {
                     feature: feature,
                     variables: {}
                 };
-                return L.circleMarker(latlng, style_Restaurants_2_0(feature));
+                return L.circleMarker(latlng, style_Restaurants_3_0(feature));
             },
         });
-        bounds_group.addLayer(layer_Restaurants_2);
-        map.addLayer(layer_Restaurants_2);
+        bounds_group.addLayer(layer_Restaurants_3);
+        map.addLayer(layer_Restaurants_3);
         map.on("zoomend", function(e) {
             if (map.getZoom() <= 19 && map.getZoom() >= 15) {
                 map.addLayer(layer_GoogleSatelliteHybrid_1);
             } else if (map.getZoom() > 19 || map.getZoom() < 15) {
                 map.removeLayer(layer_GoogleSatelliteHybrid_1);
             }
+            if (map.getZoom() <= 19 && map.getZoom() >= 13) {
+                map.addLayer(layer_Ancien_quartiers_BDX_2);
+            } else if (map.getZoom() > 19 || map.getZoom() < 13) {
+                map.removeLayer(layer_Ancien_quartiers_BDX_2);
+            }
         });
             if (map.getZoom() <= 19 && map.getZoom() >= 15) {
                 map.addLayer(layer_GoogleSatelliteHybrid_1);
             } else if (map.getZoom() > 19 || map.getZoom() < 15) {
                 map.removeLayer(layer_GoogleSatelliteHybrid_1);
+            }
+            if (map.getZoom() <= 19 && map.getZoom() >= 13) {
+                map.addLayer(layer_Ancien_quartiers_BDX_2);
+            } else if (map.getZoom() > 19 || map.getZoom() < 13) {
+                map.removeLayer(layer_Ancien_quartiers_BDX_2);
             }
         var osmGeocoder = new L.Control.Geocoder({
             collapsed: true,
@@ -246,16 +722,16 @@
         document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
         .title += 'Search for a place';
         var baseMaps = {};
-        L.control.layers(baseMaps,{'Restaurants<br /><table><tr><td style="text-align: center;"><img src="legend/Restaurants_2_Afaire0.png" /></td><td>A faire</td></tr><tr><td style="text-align: center;"><img src="legend/Restaurants_2_Avenir1.png" /></td><td>A venir</td></tr><tr><td style="text-align: center;"><img src="legend/Restaurants_2_Faits2.png" /></td><td>Faits</td></tr></table>': layer_Restaurants_2,"Google Satellite Hybrid ": layer_GoogleSatelliteHybrid_1,"Google Map ": layer_GoogleMap_0,}).addTo(map);
+        L.control.layers(baseMaps,{'Restaurants<br /><table><tr><td style="text-align: center;"><img src="legend/Restaurants_3_Afaire0.png" /></td><td>A faire</td></tr><tr><td style="text-align: center;"><img src="legend/Restaurants_3_Avenir1.png" /></td><td>A venir</td></tr><tr><td style="text-align: center;"><img src="legend/Restaurants_3_Faits2.png" /></td><td>Faits</td></tr></table>': layer_Restaurants_3,'Ancien _quartiers_BDX<br /><table><tr><td style="text-align: center;"><img src="legend/Ancien_quartiers_BDX_2_BordeauxNord0.png" /></td><td>Bordeaux Nord</td></tr><tr><td style="text-align: center;"><img src="legend/Ancien_quartiers_BDX_2_CHARTRONS1.png" /></td><td>CHARTRONS</td></tr><tr><td style="text-align: center;"><img src="legend/Ancien_quartiers_BDX_2_CROIXBLANCHE2.png" /></td><td>CROIX BLANCHE</td></tr><tr><td style="text-align: center;"><img src="legend/Ancien_quartiers_BDX_2_CROIXDESEGUEY3.png" /></td><td>CROIX DE SEGUEY</td></tr><tr><td style="text-align: center;"><img src="legend/Ancien_quartiers_BDX_2_GAMBETTA4.png" /></td><td>GAMBETTA</td></tr><tr><td style="text-align: center;"><img src="legend/Ancien_quartiers_BDX_2_GDHOMMES5.png" /></td><td>GD HOMMES</td></tr><tr><td style="text-align: center;"><img src="legend/Ancien_quartiers_BDX_2_HOTELDEVILLESAINTCHRISTOLY6.png" /></td><td>HOTEL DE VILLE /SAINT-CHRISTOLY</td></tr><tr><td style="text-align: center;"><img src="legend/Ancien_quartiers_BDX_2_JARDINPUBLIC7.png" /></td><td>JARDIN PUBLIC</td></tr><tr><td style="text-align: center;"><img src="legend/Ancien_quartiers_BDX_2_JUDAIQUE8.png" /></td><td>JUDAIQUE</td></tr><tr><td style="text-align: center;"><img src="legend/Ancien_quartiers_BDX_2_MARNESAINTJEAN9.png" /></td><td>MARNE/SAINT-JEAN</td></tr><tr><td style="text-align: center;"><img src="legend/Ancien_quartiers_BDX_2_MERIADECK10.png" /></td><td>MERIADECK</td></tr><tr><td style="text-align: center;"><img src="legend/Ancien_quartiers_BDX_2_NANSOUTY11.png" /></td><td>NANSOUTY</td></tr><tr><td style="text-align: center;"><img src="legend/Ancien_quartiers_BDX_2_ORNANO12.png" /></td><td>ORNANO</td></tr><tr><td style="text-align: center;"><img src="legend/Ancien_quartiers_BDX_2_PALAISGALLIEN13.png" /></td><td>PALAIS GALLIEN</td></tr><tr><td style="text-align: center;"><img src="legend/Ancien_quartiers_BDX_2_QUINQUONCES14.png" /></td><td>QUINQUONCES</td></tr><tr><td style="text-align: center;"><img src="legend/Ancien_quartiers_BDX_2_SAINTBRUNO15.png" /></td><td>SAINT-BRUNO</td></tr><tr><td style="text-align: center;"><img src="legend/Ancien_quartiers_BDX_2_SAINTGENES16.png" /></td><td>SAINT-GENES</td></tr><tr><td style="text-align: center;"><img src="legend/Ancien_quartiers_BDX_2_SAINTLOUIS17.png" /></td><td>SAINT-LOUIS</td></tr><tr><td style="text-align: center;"><img src="legend/Ancien_quartiers_BDX_2_SAINTMICHEL18.png" /></td><td>SAINT-MICHEL</td></tr><tr><td style="text-align: center;"><img src="legend/Ancien_quartiers_BDX_2_SAINTPAUL19.png" /></td><td>SAINT-PAUL</td></tr><tr><td style="text-align: center;"><img src="legend/Ancien_quartiers_BDX_2_SAINTPIERRE20.png" /></td><td>SAINT-PIERRE</td></tr><tr><td style="text-align: center;"><img src="legend/Ancien_quartiers_BDX_2_SAINTSEURIN21.png" /></td><td>SAINT-SEURIN</td></tr><tr><td style="text-align: center;"><img src="legend/Ancien_quartiers_BDX_2_SAINTEEULALIE22.png" /></td><td>SAINTE EULALIE</td></tr><tr><td style="text-align: center;"><img src="legend/Ancien_quartiers_BDX_2_SAINTECROIX23.png" /></td><td>SAINTE-CROIX</td></tr><tr><td style="text-align: center;"><img src="legend/Ancien_quartiers_BDX_2_SOMME24.png" /></td><td>SOMME</td></tr><tr><td style="text-align: center;"><img src="legend/Ancien_quartiers_BDX_2_TIVOLI25.png" /></td><td>TIVOLI</td></tr><tr><td style="text-align: center;"><img src="legend/Ancien_quartiers_BDX_2_VICTOIRE26.png" /></td><td>VICTOIRE</td></tr><tr><td style="text-align: center;"><img src="legend/Ancien_quartiers_BDX_2_27.png" /></td><td></td></tr></table>': layer_Ancien_quartiers_BDX_2,"Google Satellite Hybrid ": layer_GoogleSatelliteHybrid_1,"Google Map ": layer_GoogleMap_0,}).addTo(map);
         map.on("zoomend", function(){
 
-                if (map.hasLayer(layer_Restaurants_2)) {
+                if (map.hasLayer(layer_Restaurants_3)) {
                     if (map.getZoom() <= 12 && map.getZoom() >= 19) {
-                        layer_Restaurants_2.eachLayer(function (layer) {
+                        layer_Restaurants_3.eachLayer(function (layer) {
                             layer.openTooltip();
                         });
                     } else {
-                        layer_Restaurants_2.eachLayer(function (layer) {
+                        layer_Restaurants_3.eachLayer(function (layer) {
                             layer.closeTooltip();
                         });
                     }
@@ -263,38 +739,38 @@
         });
         setBounds();
         var i = 0;
-        layer_Restaurants_2.eachLayer(function(layer) {
+        layer_Restaurants_3.eachLayer(function(layer) {
             var context = {
                 feature: layer.feature,
                 variables: {}
             };
-            layer.bindTooltip((layer.feature.properties['nom'] !== null?String('<div style="color: #000000; font-size: 12pt; font-family: \'Arial Black\', sans-serif;">' + layer.feature.properties['nom']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_Restaurants_2'});
+            layer.bindTooltip((layer.feature.properties['nom'] !== null?String('<div style="color: #000000; font-size: 12pt; font-family: \'Arial Black\', sans-serif;">' + layer.feature.properties['nom']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_Restaurants_3'});
             labels.push(layer);
             totalMarkers += 1;
               layer.added = true;
               addLabel(layer, i);
               i++;
         });
-                if (map.hasLayer(layer_Restaurants_2)) {
+                if (map.hasLayer(layer_Restaurants_3)) {
                     if (map.getZoom() <= 12 && map.getZoom() >= 19) {
-                        layer_Restaurants_2.eachLayer(function (layer) {
+                        layer_Restaurants_3.eachLayer(function (layer) {
                             layer.openTooltip();
                         });
                     } else {
-                        layer_Restaurants_2.eachLayer(function (layer) {
+                        layer_Restaurants_3.eachLayer(function (layer) {
                             layer.closeTooltip();
                         });
                     }
                 }
-        resetLabels([layer_Restaurants_2]);
+        resetLabels([layer_Restaurants_3]);
         map.on("zoomend", function(){
-            resetLabels([layer_Restaurants_2]);
+            resetLabels([layer_Restaurants_3]);
         });
         map.on("layeradd", function(){
-            resetLabels([layer_Restaurants_2]);
+            resetLabels([layer_Restaurants_3]);
         });
         map.on("layerremove", function(){
-            resetLabels([layer_Restaurants_2]);
+            resetLabels([layer_Restaurants_3]);
         });
         </script>
     </body>
