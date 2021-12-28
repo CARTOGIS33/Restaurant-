@@ -55,7 +55,7 @@
         }
         var map = L.map('map', {
             zoomControl:true, maxZoom:28, minZoom:1
-        }).fitBounds([[44.79382800209406,-0.6264269736071855],[44.869573861856324,-0.5046690325731853]]);
+        }).fitBounds([[44.717970762816364,-0.7840114292838571],[44.89159843508433,-0.5049130343586916]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -612,6 +612,9 @@
                     </tr>\
                     <tr>\
                         <td colspan="2">' + (feature.properties['faits/ a faire/a venir'] !== null ? autolinker.link(feature.properties['faits/ a faire/a venir'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>carte</strong><br />' + (feature.properties['carte'] !== null ? autolinker.link(feature.properties['carte'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             layer.bindPopup(popupContent, {maxHeight: 400});
