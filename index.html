@@ -54,7 +54,7 @@
         }
         var map = L.map('map', {
             zoomControl:true, maxZoom:28, minZoom:1
-        }).fitBounds([[44.76029295779286,-0.7533820588735017],[44.89326468397724,-0.5396362033671732]]);
+        }).fitBounds([[44.71616799906261,-0.8798255366124288],[44.982111451431514,-0.45233382559956614]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -227,15 +227,15 @@
         bounds_group.addLayer(layer_Restaurants_2);
         map.addLayer(layer_Restaurants_2);
         map.on("zoomend", function(e) {
-            if (map.getZoom() <= 19 && map.getZoom() >= 15) {
+            if (map.getZoom() <= 18 && map.getZoom() >= 18) {
                 map.addLayer(layer_GoogleSatelliteHybrid_1);
-            } else if (map.getZoom() > 19 || map.getZoom() < 15) {
+            } else if (map.getZoom() > 18 || map.getZoom() < 18) {
                 map.removeLayer(layer_GoogleSatelliteHybrid_1);
             }
         });
-            if (map.getZoom() <= 19 && map.getZoom() >= 15) {
+            if (map.getZoom() <= 18 && map.getZoom() >= 18) {
                 map.addLayer(layer_GoogleSatelliteHybrid_1);
-            } else if (map.getZoom() > 19 || map.getZoom() < 15) {
+            } else if (map.getZoom() > 18 || map.getZoom() < 18) {
                 map.removeLayer(layer_GoogleSatelliteHybrid_1);
             }
         var osmGeocoder = new L.Control.Geocoder({
